@@ -1,0 +1,72 @@
+html {
+  cursor: url("../cursor/cur425.cur"), crosshair;
+}
+
+body {
+  display: grid;
+
+  font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue",
+    Helvetica, Arial, sans-serif, system-ui;
+  background: hsl(0 0% 4%);
+  color: hsl(0 0% 100%);
+}
+
+.navbar {
+  background: linear-gradient(
+    209deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  max-width: 400px;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+}
+
+/* Réteg a háttérhomályosításhoz */
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  border-radius: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.navbar:hover::before {
+  opacity: 1;
+}
+
+/* Gomb stílus */
+.navbar .btn {
+  background: transparent;
+  border: 0;
+  margin-inline: 20px;
+  color: white;
+  font-size: large;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.navbar .btn:hover {
+  /*background-color: blue;*/
+  z-index: 2;
+}
+
+/* Hoverkor minden nem hovered gomb legyen halványabb */
+.navbar:hover .btn:not(:hover) {
+  opacity: 0.3;
+  transform: scale(0.95);
+}
